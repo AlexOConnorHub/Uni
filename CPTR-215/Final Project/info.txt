@@ -1,0 +1,27 @@
+  Run `pip install -r req.txt` to install dependencies
+    bottle==0.12.19
+    gevent==20.9.0
+
+Known weak points:
+    Currently, usernames that are not valid filenames will cause unexpected results.
+        For avatars, I rename the file username.ext, meaning if username is changed
+        by bottle to be a valid filename, then it will not be displayed for anyone 
+        on the site.
+
+    Chat filter could be a lot better. I grabbed a list that was almost 3000 words
+        long, but removed 500 because the way I was filtering meant that they would
+        never cause a chat to be flagged. In an ideal world, I would like for chats
+        with flagged content to be visible to those who allow unfiltered chat, but
+        as that requires more settings, time, and management, I simply restricted
+        free speech. The way I filter chat is by going through word by word and 
+        checking if it is in the banned list. I could probably do better to check
+        if any of the list is in the chat.
+
+    Currently, Every 5 seconds or so, the web browser pings the server asking if there 
+        are any new chats. There is most likely a better way to do this, as it causes 
+        excess web traffic for users and server.
+
+    Chat logging works fine, and even has a variable hard log, but if this is completely
+        empty, the server will not start, with JSON errors. I have a message to the server
+        admin in there as a placeholder.
+    
